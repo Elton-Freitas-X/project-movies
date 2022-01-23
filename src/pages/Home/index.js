@@ -9,6 +9,7 @@ export default function Home() {
   useEffect(() => {
 
     async function loadFilmes(){
+             // BASE                   ROTA
       //sujeitoprogramador.com + r-api/?api=filmes
       const response = await api.get('r-api/?api=filmes')
       setFilmes(response.data);
@@ -19,14 +20,14 @@ export default function Home() {
   }, []);
 
   return(
-    <div className='container'>
+    <div className="container">
       <div class="lista-filmes">
           {filmes.map((filme)=>{
             return(
               <article key={filme.id}>
                   <strong> {filme.nome}</strong>
                   <img src={filme.foto} alt={filme.nome}/>
-                  <Link to='/'>Acessar</Link>
+                  <Link to={`/filme/${filme.id}`}>Acessar</Link>
               </article>
             )
           })}
